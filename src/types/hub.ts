@@ -87,3 +87,32 @@ export interface IntegrationArtifact {
   location: string
   status: 'Active' | 'Review'
 }
+
+export type MessageHopKind = 'External System' | 'Connection' | 'Logic App' | 'Workflow' | 'Azure Service'
+
+export interface MessageHop {
+  id: string
+  sequence: number
+  kind: MessageHopKind
+  name: string
+  detail: string
+  status: 'Succeeded' | 'Failed' | 'In progress'
+  timestamp: string
+  duration: string
+  workflowId?: string
+  connectionId?: string
+  systemId?: string
+  payload: string
+}
+
+export interface CorrelationTrace {
+  correlationId: string
+  businessFlowId: string
+  messageType: string
+  started: string
+  elapsed: string
+  status: 'Succeeded' | 'Failed' | 'In progress'
+  source: string
+  destination: string
+  hops: MessageHop[]
+}

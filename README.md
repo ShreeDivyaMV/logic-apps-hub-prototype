@@ -11,6 +11,8 @@ A static, responsive operations dashboard that demonstrates a unified management
 - Integration Estate snapshot on Overview with direct inventory navigation
 - Customer-defined Business Flows grouping workflows across different Logic Apps
 - Per-group analytics, connector usage, execution paths, and Azure/external dependency maps
+- Per-flow dependency graphs covering systems, connections, Logic Apps, workflows, schemas, maps, and assemblies
+- Correlation-ID message tracing with ordered cross-system hops, timings, status, and payload metadata
 - Guided in-memory group builder with automatic dependency discovery
 - Explicit Logic App-to-workflow hierarchy throughout the UI, with workflow selection grouped and sorted by Logic App name
 - Run Details workspace with Success %, throughput, latency, and action-duration trend graphs

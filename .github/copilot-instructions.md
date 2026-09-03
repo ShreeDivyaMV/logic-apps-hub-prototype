@@ -15,5 +15,6 @@
 - [x] Add the Business Flows overview snapshot and safe prototype configuration workspace.
 - [x] Add custom queries, cross-view query actions, AI Insights, GitHub model selection, and Logic Apps Hub branding.
 - [x] Add the Integration Estate inventory with workflow artifacts and an Overview snapshot.
+- [x] Add Business Flow dependency topology and correlation-ID message tracing.
 
 Keep changes concise, accessible, responsive, and type-safe. Keep all prototype data fictional and local unless a secured integration is explicitly requested.

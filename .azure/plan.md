@@ -1,7 +1,7 @@
 # Unified Multi-Logic Apps Hub Prototype Plan
 
 ## Status
-Integration Estate enhancement completed and validated
+Business Flow topology and tracing enhancement completed and validated
 
 ## Goal
 Build a polished static website prototype for a unified hub that presents operational data across multiple Azure Logic Apps. The prototype will use realistic local dummy data and will not connect to Azure APIs.
@@ -95,6 +95,16 @@ Build a polished static website prototype for a unified hub that presents operat
 - [x] Add a context-aware query editor action for the new estate view.
 - [x] Keep inventory and artifact records fictional and local.
 - [x] Validate responsive interactions, lint, production build, and published-site compatibility.
+
+## Business Flow topology and tracing enhancement
+- [x] Add fictional correlation traces with message hops across systems, connections, Logic Apps, and workflows.
+- [x] Add a Business Flow topology tab showing dependent systems, connections, Logic Apps, workflows, and artifacts in one graph.
+- [x] Add a Message Trace tab with correlation-ID search and selectable sample traces.
+- [x] Show ordered message hops, status, timing, payload metadata, and cross-system transitions.
+- [x] Scope topology and traces to the selected Business Flow.
+- [x] Add context-aware query support for correlation tracing.
+- [x] Keep all correlation IDs, payload metadata, resources, and trace events fictional and local.
+- [x] Validate accessibility, responsive layout, lint, production build, and GitHub Pages deployment.
 
 ## Security and Azure considerations
 - Keep all data fictional and local.
