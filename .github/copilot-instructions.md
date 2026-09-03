@@ -14,5 +14,6 @@
 - [x] Add Run Details analytics, failure breakdowns, hierarchy-aware filters, and enriched results.
 - [x] Add the Business Flows overview snapshot and safe prototype configuration workspace.
 - [x] Add custom queries, cross-view query actions, AI Insights, GitHub model selection, and Logic Apps Hub branding.
+- [x] Add the Integration Estate inventory with workflow artifacts and an Overview snapshot.
 
 Keep changes concise, accessible, responsive, and type-safe. Keep all prototype data fictional and local unless a secured integration is explicitly requested.

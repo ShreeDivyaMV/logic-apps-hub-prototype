@@ -6,6 +6,9 @@ A static, responsive operations dashboard that demonstrates a unified management
 
 - Estate-wide KPIs, run-volume chart, and health breakdown
 - Neutral integration-estate overview with a linked Business Flows snapshot
+- Integration Estate inventory grouped by Logic App with expandable workflow, connection, system, and artifact views
+- Workflow artifact tracking for schemas, maps, custom assemblies/DLLs, and certificates
+- Integration Estate snapshot on Overview with direct inventory navigation
 - Customer-defined Business Flows grouping workflows across different Logic Apps
 - Per-group analytics, connector usage, execution paths, and Azure/external dependency maps
 - Guided in-memory group builder with automatic dependency discovery

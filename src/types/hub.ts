@@ -75,3 +75,15 @@ export interface BusinessFlow {
   dependencyIds: string[]
   createdAt: string
 }
+
+export type ArtifactType = 'Schema' | 'Map' | 'Assembly' | 'Certificate'
+
+export interface IntegrationArtifact {
+  id: string
+  name: string
+  type: ArtifactType
+  version: string
+  workflowIds: string[]
+  location: string
+  status: 'Active' | 'Review'
+}

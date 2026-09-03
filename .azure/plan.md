@@ -1,7 +1,7 @@
 # Unified Multi-Logic Apps Hub Prototype Plan
 
 ## Status
-Query and AI insights enhancement completed and validated
+Integration Estate enhancement completed and validated
 
 ## Goal
 Build a polished static website prototype for a unified hub that presents operational data across multiple Azure Logic Apps. The prototype will use realistic local dummy data and will not connect to Azure APIs.
@@ -85,6 +85,16 @@ Build a polished static website prototype for a unified hub that presents operat
 - [x] Add a simulated GitHub connection and model chooser without requesting or storing credentials.
 - [x] Keep all query execution, GitHub connection, AI output, and saved views fictional and local.
 - [x] Validate navigation, interactions, responsive layout, lint, and production build.
+
+## Integration Estate enhancement
+- [x] Add typed integration artifact data for schemas, maps, assemblies, and certificates used by workflows.
+- [x] Add an Integration Estate tab grouped by Logic App, with expandable workflows.
+- [x] Show each workflow's dependent Azure/external systems, connection instances, and artifacts.
+- [x] Add estate-wide filters and inventory summary metrics.
+- [x] Add an Integration Estate snapshot and navigation link to Overview.
+- [x] Add a context-aware query editor action for the new estate view.
+- [x] Keep inventory and artifact records fictional and local.
+- [x] Validate responsive interactions, lint, production build, and published-site compatibility.
 
 ## Security and Azure considerations
 - Keep all data fictional and local.
