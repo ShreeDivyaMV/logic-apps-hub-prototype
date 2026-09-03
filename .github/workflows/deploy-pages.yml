@@ -31,7 +31,7 @@ jobs:
         run: npm run build
       - name: Configure Pages
         uses: actions/configure-pages@v5
-      - name: Upload Pages artifact
+        with:`r`n          enablement: true`r`n      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
