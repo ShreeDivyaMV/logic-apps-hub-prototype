@@ -45,6 +45,7 @@ export interface HubAlert {
 
 export type SystemKind = 'Azure' | 'External'
 export type ConnectionHealth = 'Connected' | 'Degraded'
+export type DependencyDirection = 'Source' | 'Target' | 'Both' | 'Supporting'
 
 export interface FlowConnection {
   id: string
@@ -62,6 +63,8 @@ export interface FlowDependency {
   service: string
   kind: SystemKind
   role: string
+  direction: DependencyDirection
+  connectionIds: string[]
   workflowIds: string[]
 }
 

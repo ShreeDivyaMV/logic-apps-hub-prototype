@@ -11,15 +11,15 @@ export const flowConnections: FlowConnection[] = [
 ]
 
 export const flowDependencies: FlowDependency[] = [
-  { id: 'dep-servicebus', name: 'sb-commerce-prod', service: 'Azure Service Bus', kind: 'Azure', role: 'Event transport', workflowIds: ['wf-orders', 'wf-notifications'] },
-  { id: 'dep-keyvault', name: 'kv-integration-prod', service: 'Azure Key Vault', kind: 'Azure', role: 'Secret references', workflowIds: ['wf-orders', 'wf-invoices', 'wf-customer-sync', 'wf-stock', 'wf-notifications'] },
-  { id: 'dep-storage', name: 'stfinancedocuments', service: 'Azure Storage', kind: 'Azure', role: 'Document archive', workflowIds: ['wf-invoices', 'wf-vendor'] },
-  { id: 'dep-eventgrid', name: 'eg-inventory-prod', service: 'Azure Event Grid', kind: 'Azure', role: 'Inventory events', workflowIds: ['wf-stock'] },
-  { id: 'dep-appinsights', name: 'appi-integration-hub', service: 'Application Insights', kind: 'Azure', role: 'Telemetry', workflowIds: ['wf-orders', 'wf-invoices', 'wf-customer-sync', 'wf-stock', 'wf-notifications'] },
-  { id: 'dep-sap', name: 'SAP S/4HANA', service: 'SAP ERP', kind: 'External', role: 'Orders, finance & stock', workflowIds: ['wf-orders', 'wf-invoices', 'wf-stock'] },
-  { id: 'dep-salesforce', name: 'Salesforce Service Cloud', service: 'Salesforce', kind: 'External', role: 'Customer profiles', workflowIds: ['wf-customer-sync'] },
-  { id: 'dep-warehouse', name: 'Manhattan WMS', service: 'Warehouse platform', kind: 'External', role: 'Fulfillment & inventory', workflowIds: ['wf-orders', 'wf-stock'] },
-  { id: 'dep-sendgrid', name: 'SendGrid', service: 'Email platform', kind: 'External', role: 'Customer messaging', workflowIds: ['wf-notifications'] },
+  { id: 'dep-servicebus', name: 'sb-commerce-prod', service: 'Azure Service Bus', kind: 'Azure', role: 'Event transport', direction: 'Both', connectionIds: ['conn-servicebus'], workflowIds: ['wf-orders', 'wf-notifications'] },
+  { id: 'dep-keyvault', name: 'kv-integration-prod', service: 'Azure Key Vault', kind: 'Azure', role: 'Secret references', direction: 'Supporting', connectionIds: [], workflowIds: ['wf-orders', 'wf-invoices', 'wf-customer-sync', 'wf-stock', 'wf-notifications'] },
+  { id: 'dep-storage', name: 'stfinancedocuments', service: 'Azure Storage', kind: 'Azure', role: 'Document archive', direction: 'Target', connectionIds: ['conn-storage'], workflowIds: ['wf-invoices', 'wf-vendor'] },
+  { id: 'dep-eventgrid', name: 'eg-inventory-prod', service: 'Azure Event Grid', kind: 'Azure', role: 'Inventory events', direction: 'Source', connectionIds: ['conn-eventgrid'], workflowIds: ['wf-stock'] },
+  { id: 'dep-appinsights', name: 'appi-integration-hub', service: 'Application Insights', kind: 'Azure', role: 'Telemetry', direction: 'Supporting', connectionIds: [], workflowIds: ['wf-orders', 'wf-invoices', 'wf-customer-sync', 'wf-stock', 'wf-notifications'] },
+  { id: 'dep-sap', name: 'SAP S/4HANA', service: 'SAP ERP', kind: 'External', role: 'Orders, finance & stock', direction: 'Both', connectionIds: ['conn-sap'], workflowIds: ['wf-orders', 'wf-invoices', 'wf-stock'] },
+  { id: 'dep-salesforce', name: 'Salesforce Service Cloud', service: 'Salesforce', kind: 'External', role: 'Customer profiles', direction: 'Target', connectionIds: ['conn-dynamics'], workflowIds: ['wf-customer-sync'] },
+  { id: 'dep-warehouse', name: 'Manhattan WMS', service: 'Warehouse platform', kind: 'External', role: 'Fulfillment & inventory', direction: 'Target', connectionIds: ['conn-servicebus', 'conn-eventgrid'], workflowIds: ['wf-orders', 'wf-stock'] },
+  { id: 'dep-sendgrid', name: 'SendGrid', service: 'Email platform', kind: 'External', role: 'Customer messaging', direction: 'Target', connectionIds: ['conn-sendgrid'], workflowIds: ['wf-notifications'] },
 ]
 
 export const initialBusinessFlows: BusinessFlow[] = [
