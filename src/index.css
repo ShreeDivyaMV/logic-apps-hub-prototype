@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700&display=swap');
+
+:root {
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  color: #303242;
+  background: #f5f6f9;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --canvas: #f5f6f9;
+  --ink: #303242;
+  --muted: #858896;
+  --line: #e7e8ed;
+  --purple: #7166dc;
+  --green: #35a56f;
+  --amber: #e5a139;
+  --red: #d65a62;
+  --shadow-sm: 0 2px 7px rgba(26, 28, 50, .025);
+  --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+html { min-width: 320px; background: var(--canvas); }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, select, input { font-family: inherit; }
+button:focus-visible, select:focus-visible, input:focus-visible, tr:focus-visible { outline: 2px solid #786ee6; outline-offset: 2px; }
+::selection { color: #312a75; background: #dfdcff; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #cfd1d9; border-radius: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
