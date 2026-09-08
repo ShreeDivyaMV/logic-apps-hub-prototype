@@ -25,13 +25,24 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: single-logic-app-hub/package-lock.json
-      - name: Install dependencies
+          cache-dependency-path: |
+            package-lock.json
+            single-logic-app-hub/package-lock.json
+      - name: Install multi-app hub dependencies
+        run: npm ci
+      - name: Build multi-app hub
+        run: npm run build
+      - name: Install single-app hub dependencies
         working-directory: single-logic-app-hub
         run: npm ci
-      - name: Build
+      - name: Build single-app hub
         working-directory: single-logic-app-hub
         run: npm run build
+      - name: Assemble Pages site
+        run: |
+          mkdir -p pages/single-logic-app-hub
+          cp -R dist/. pages/
+          cp -R single-logic-app-hub/dist/. pages/single-logic-app-hub/
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
@@ -39,7 +50,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: single-logic-app-hub/dist
+          path: pages
 
   deploy:
     environment:
