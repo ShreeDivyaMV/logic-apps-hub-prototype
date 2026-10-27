@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142338">
+  <title>Integration Landscape</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="index.html" aria-label="Integration Landscape home"><span class="brand-mark">i<span>l</span></span><span>Integration<br><strong>Landscape</strong></span></a>
+    <div class="workspace-label">WORKSPACE</div>
+    <div class="workspace"><span class="workspace-icon">C</span><span>Contoso commerce<small>Integration platform</small></span></div>
+    <div class="workspace-label">ON THIS PAGE</div>
+    <nav aria-label="Inventory sections">
+      <a class="nav-item" href="#view-graph"><span aria-hidden="true">&#9671;</span>Dependency graph</a>
+      <a class="nav-item" href="#view-connections"><span aria-hidden="true">&#8644;</span>Connections<span class="nav-count">8</span></a>
+      <a class="nav-item" href="#view-artifacts"><span aria-hidden="true">&#9635;</span>Artifacts<span class="nav-count" id="artifact-nav-count"></span></a>
+    </nav>
+    <div class="sidebar-bottom"><span class="sample-dot"></span> Prototype workspace<p>Illustrative data only.<br>No live Azure connection.</p><div class="profile"><span>SC</span><div>Sarah Chen<small>Platform engineer</small></div></div></div>
+  </aside>
+  <div class="app">
+    <header class="topbar"><div><strong>Integration Landscape</strong></div><div class="topbar-right"><span class="demo-label">SAMPLE DATA</span><span class="avatar">SC</span></div></header>
+    <main>
+      <div class="breadcrumb">Logic apps <span>/</span> la-commerce-prod <span>/</span> <span>Integration landscape</span></div>
+      <section class="page-heading"><div><div class="eyebrow">YOUR INTEGRATION COMPONENTS, IN ONE PLACE</div><h1>Integration Landscape</h1><p>A unified view of all workflows, connections and artifacts with their dependencies.</p></div></section>
+      <section class="metrics" aria-label="Integration summary">
+        <div class="metric"><span class="metric-icon purple">&#9671;</span><div><span>Workflows</span><strong id="workflow-count"></strong><small>Across 4 business domains</small></div></div>
+        <div class="metric"><span class="metric-icon blue">&#8644;</span><div><span>Connections</span><strong>8 <em>6 healthy</em></strong><small><span class="amber-dot"></span> 2 need attention</small></div></div>
+        <div class="metric"><span class="metric-icon teal">&#9635;</span><div><span>Artifacts</span><strong id="artifact-count"></strong><small>Schemas, maps, code &amp; more</small></div></div>
+        <div class="metric"><span class="metric-icon orange">&#8599;</span><div><span>Connected systems</span><strong>7</strong><small>Source &amp; target endpoints</small></div></div>
+      </section>
+      <section id="view-graph" class="inventory-section" aria-labelledby="graph-heading" tabindex="-1">
+        <div class="section-heading"><div><h2 id="graph-heading">Workflow dependencies</h2><p>Follow the path from source systems through workflows to their destinations.</p></div><span class="hint">Select a node to explore details</span></div>
+        <div class="filter-bar graph-filters">
+          <label class="search-field"><span aria-hidden="true">&#9906;</span><input id="graph-search" type="search" placeholder="Find a workflow..." aria-label="Search workflows"></label>
+          <div class="filter-field"><span>Source system</span><details id="source-filter" class="multi-select"></details></div>
+          <div class="filter-field"><span>Target system</span><details id="target-filter" class="multi-select"></details></div>
+          <div class="filter-field"><span>Connection</span><details id="connection-filter" class="multi-select"></details></div>
+          <button class="button" id="workflow-picker" aria-expanded="false" aria-controls="workflow-options">Select workflows <span id="selected-count"></span> &#8964;</button>
+          <button class="text-button" id="reset-graph">Reset</button>
+        </div>
+        <div id="workflow-options" class="workflow-options" hidden><div class="picker-heading"><strong>Include workflows</strong><button class="text-button" id="select-all-workflows">Select all</button><button class="text-button" id="clear-workflows">Clear all</button></div><div id="workflow-checkboxes"></div><p>Selections combine with the source, target, connection and search filters.</p></div>
+        <div id="graph-notice" class="notice" role="status"></div>
+        <div class="graph-panel">
+          <div class="graph-toolbar"><div><span class="live-dot"></span><strong>Dependency map</strong><span id="graph-summary"></span></div><button class="button small" id="fit-graph">Fit to view</button></div>
+          <div class="graph-viewport" id="graph-viewport"><div class="graph-canvas" id="graph-canvas"><svg id="graph-lines" aria-label="Directional dependency edges"></svg><div class="graph-column" id="sources-column"><h3>SOURCE SYSTEMS</h3><div id="source-nodes" class="system-nodes"></div></div><div class="graph-column workflow-column"><h3>WORKFLOWS <span id="visible-count"></span></h3><div id="workflow-nodes"></div></div><div class="graph-column" id="targets-column"><h3>TARGET SYSTEMS</h3><div id="target-nodes" class="system-nodes"></div></div></div></div>
+          <div class="graph-footer"><div class="legend"><span><i class="line-key"></i> Connection dependency</span><span><i class="line-key dashed"></i> Workflow invocation</span><span><i class="health-key"></i> Connection needs attention</span></div><span>Arrows show message direction</span></div>
+        </div>
+        <div class="insight-strip"><span class="insight-icon">&#9432;</span><div><strong>A shared connection is a shared dependency</strong><p>Open a connection to see its configuration and every workflow that depends on it. Dashed links represent direct workflow calls within the visible selection.</p></div></div>
+      </section>
+      <section id="view-connections" class="inventory-section" aria-labelledby="connections-heading" tabindex="-1">
+        <div class="section-heading"><div><h2 id="connections-heading">Connection inventory</h2><p>Explore connection health, configuration and the workflows that rely on them.</p></div><span class="hint">Sample health snapshot &middot; 27 Oct 2026, 09:00 UTC</span></div>
+        <div class="filter-bar"><label class="search-field"><span aria-hidden="true">&#9906;</span><input type="search" id="connections-search" placeholder="Search name, connector or endpoint..." aria-label="Search connections"></label><div class="filter-field"><span>Health</span><details id="health-filter" class="multi-select"></details></div><div class="filter-field"><span>Type</span><details id="connection-type-filter" class="multi-select"></details></div><span class="results-count" id="connections-count" role="status"></span></div>
+        <div class="table-panel"><table><thead><tr><th>Connection / connector</th><th>Health</th><th>Type</th><th>Authentication</th><th>Workflow usage</th><th>Last checked (UTC)</th><th><span class="sr-only">Details</span></th></tr></thead><tbody id="connections-body"></tbody></table><div class="table-foot">Health and validation times are illustrative, not live checks. Secrets are never displayed.</div></div>
+      </section>
+      <section id="view-artifacts" class="inventory-section" aria-labelledby="artifacts-heading" tabindex="-1">
+        <div class="section-heading"><div><h2 id="artifacts-heading">Artifact inventory</h2><p>Browse the project structure, artifact types and deployment placement.</p></div><span class="hint">Logic Apps Standard project</span></div>
+        <div id="artifact-types" class="artifact-types" aria-label="Filter by artifact type"></div>
+        <div class="artifact-layout"><aside class="folder-panel" aria-label="Artifact folder structure"><div class="folder-heading">PROJECT EXPLORER<button class="text-button" id="all-folders">Show all</button></div><button class="folder-root" id="root-folder">&#9635; la-commerce-prod</button><div id="folder-tree"></div><div class="folder-note">Project-relative paths.<br>Sample inventory; no files are uploaded.</div></aside><div class="artifact-main"><div class="filter-bar"><label class="search-field"><span aria-hidden="true">&#9906;</span><input type="search" id="artifact-search" placeholder="Search artifacts or paths..." aria-label="Search artifacts"></label><span id="artifact-results" class="results-count" role="status"></span></div><div class="path-bar" id="artifact-path">la-commerce-prod / All artifacts</div><div class="table-panel"><table><thead><tr><th>Artifact / location</th><th>Type</th><th>Size</th><th>Used by</th><th>Placement</th></tr></thead><tbody id="artifacts-body"></tbody></table></div></div></div>
+        <div class="insight-strip"><span class="insight-icon">&#9432;</span><div><strong>Inventory and placement, together</strong><p>Artifacts are grouped by project folder. Select a file to see its full path, workflow references and where it belongs at deployment. Certificate entries are references only; no private key material is included.</p></div></div>
+      </section>
+      <footer class="page-footer"><span>INTEGRATION LANDSCAPE <span class="middot">&middot;</span> Design prototype</span><span>Local sample data &middot; No Azure credentials required</span></footer>
+    </main>
+  </div>
+  <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+  <aside id="detail-drawer" class="detail-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden tabindex="-1"><button class="close-button" id="close-drawer" aria-label="Close details">&times;</button><div id="drawer-content"></div></aside>
+</body>
+</html>
